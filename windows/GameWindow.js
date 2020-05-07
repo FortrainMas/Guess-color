@@ -1,16 +1,44 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+
 import ColorField from '../components/ColorField';
+import ColorSlider from '../components/ColorSliders';
 
 export default class GameWindow extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            showedColor: getRandomColor(),
+            guessedColor: {red: 0, green: 0, blue: 0},
+            guessed: true,
+        }
+    }
+    onNewColor = (color) => {
+        //console.log(color)
+        this.setState({guessedColor: color});
+    }
     render(){
+        console.log(this.state.guessedColor)
         return(
             <View style = {styles.container}>
-                <ColorField color = {{red:230, green:30, blue:30}}></ColorField>
-                <Text>PlayWindow is too shy, but we agree with him, and you will see him soon</Text>
+                <ColorField color = {this.state.showedColor}></ColorField>
+                <Text>Color</Text>
+                <ColorField color = {this.state.guessedColor}></ColorField>
+                <Text>Your color</Text>     
+                <ColorSlider onValueChange = {(color)=>{this.onNewColor(color)}}/>           
             </View>
         )
     }
+}
+
+function getRandomColor(){
+    //Formula (Math.random() * 100).toFixed() % 25 * 10 return  number between 0 and 250 multiple 10
+    let color = {
+        red: (Math.random() * 100).toFixed() % 25 * 10,
+        green: (Math.random() * 100).toFixed() % 25 * 10,
+        blue: (Math.random() * 100).toFixed() % 25 * 10,
+    }
+    return color;
 }
 
 const styles = StyleSheet.create({

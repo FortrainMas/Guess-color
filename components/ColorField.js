@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native';
 
 export default class ColorField extends React.Component {
   render() {
-      console.log(this.props);
     return (
       <View
         style={[this.styles.colorStyle, this.props.style || this.styles.shape]}
