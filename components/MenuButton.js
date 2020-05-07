@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         margin:10,
         backgroundColor: '#A8898F',
         borderRadius:5,
-        width:'40%',
-        aspectRatio:3/1,
+        width:'45%',
+        aspectRatio:4/1,
         alignItems:'center',
     },
     text:{
