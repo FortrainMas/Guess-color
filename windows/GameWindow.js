@@ -14,17 +14,16 @@ export default class GameWindow extends React.Component{
         }
     }
     onNewColor = (color) => {
-        //console.log(color)
         this.setState({guessedColor: color});
+        this.setState({guessed: !this.state.guessed});
     }
     render(){
-        console.log(this.state.guessedColor)
         return(
             <View style = {styles.container}>
                 <ColorField color = {this.state.showedColor}></ColorField>
                 <Text>Color</Text>
-                <ColorField color = {this.state.guessedColor}></ColorField>
-                <Text>Your color</Text>     
+                <ColorField  color = {this.state.guessedColor} />
+                <Text>{String(this.state.guessed)}</Text>     
                 <ColorSlider onValueChange = {(color)=>{this.onNewColor(color)}}/>           
             </View>
         )

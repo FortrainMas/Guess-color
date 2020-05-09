@@ -17,7 +17,6 @@ export default class ColorSlider extends React.Component{
             green: this.state.green,
             blue: this.state.blue,
         }
-        console.log(color);
         onValueChange(color);
     }
     render(){
@@ -31,9 +30,10 @@ export default class ColorSlider extends React.Component{
                         step = {10}
                         minimumTrackTintColor="#FF0000"
                         maximumTrackTintColor="#F00000"
-                        onValueChange = {(value)=>{
-                            this.setState({red:value});
-                            this.valueChange();
+                        onValueChange = {(value)=>{                            
+                            this.setState({red:value}, function(){
+                                this.valueChange();
+                            });
                         }}
                     />
                     <Text style = {styles.valueText}>{this.state.red}</Text>
@@ -47,8 +47,9 @@ export default class ColorSlider extends React.Component{
                         minimumTrackTintColor="#00FF00"
                         maximumTrackTintColor="#00F000"
                         onValueChange = {(value)=>{
-                            this.setState({green:value});
-                            this.valueChange();
+                            this.setState({green:value}, function(){
+                                this.valueChange();
+                            });
                         }}
                     />
                     <Text style = {styles.valueText}>{this.state.green}</Text>
@@ -62,8 +63,9 @@ export default class ColorSlider extends React.Component{
                         minimumTrackTintColor="#0000FF"
                         maximumTrackTintColor="#0000F0"
                         onValueChange = {(value)=>{
-                            this.setState({blue:value});
-                            this.valueChange();
+                            this.setState({blue:value}, function(){
+                                this.valueChange();
+                            });
                         }}
                     />
                     <Text style = {styles.valueText}>{this.state.blue}</Text>
