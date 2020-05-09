@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text, ScrollView} from 'react-native';
 
 import ColorField from '../components/ColorField';
 import ColorSlider from '../components/ColorSliders';
 import Progress from '../components/Progress'
+import BottomPart from '../components/BottomPartButtons';
 
 export default class GameWindow extends React.Component{
     constructor(props){
@@ -14,6 +15,7 @@ export default class GameWindow extends React.Component{
             isGuessed: false,
         }
     }
+    //Handle color update in ColorField
     onNewColor = (color) => {
         console.log(this.state.showedColor);
         this.setState({guessedColor: color}, function(){
@@ -32,8 +34,9 @@ export default class GameWindow extends React.Component{
                 <ColorField color = {this.state.showedColor}></ColorField>
                 <Text style = {styles.text}>Color</Text>
                 <ColorField  color = {this.state.guessedColor} />
-                <Text style = {styles.text}>Your color</Text>     
-                <ColorSlider onValueChange = {(color)=>{this.onNewColor(color)}}/>           
+                <Text style = {styles.text}>Your color</Text>  
+                <ColorSlider onValueChange = {(color)=>{this.onNewColor(color)}}/>   
+                <BottomPart />
             </View>
         )
     }
