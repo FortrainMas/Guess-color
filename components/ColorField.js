@@ -19,7 +19,6 @@ export default class ColorField extends React.Component {
 
   //Update styles with current props
   shouldComponentUpdate(nextProps){
-      console.log(nextProps)
       this.color = nextProps.color;
       this.makeNewStyles();
       this.render();

@@ -11,16 +11,24 @@ export default class GameWindow extends React.Component{
         this.state = {
             showedColor: getRandomColor(),
             guessedColor: {red: 0, green: 0, blue: 0},
-            guessed: true,
+            isGuessed: false,
         }
     }
     onNewColor = (color) => {
-        this.setState({guessedColor: color});
+        console.log(this.state.showedColor);
+        this.setState({guessedColor: color}, function(){
+            if(this.state.guessedColor.red == this.state.showedColor.red &&
+                this.state.showedColor.green == this.state.guessedColor.green &&
+                this.state.showedColor.blue == this.state.guessedColor.blue)
+            {
+                this.setState({isGuessed:true});
+            }
+        });
     }
     render(){
         return(
             <View style = {styles.container}>
-                <Progress />
+                <Progress isGuessed = {this.state.isGuessed}/>
                 <ColorField color = {this.state.showedColor}></ColorField>
                 <Text style = {styles.text}>Color</Text>
                 <ColorField  color = {this.state.guessedColor} />
