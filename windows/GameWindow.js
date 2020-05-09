@@ -3,6 +3,7 @@ import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 
 import ColorField from '../components/ColorField';
 import ColorSlider from '../components/ColorSliders';
+import Progress from '../components/Progress'
 
 export default class GameWindow extends React.Component{
     constructor(props){
@@ -19,6 +20,7 @@ export default class GameWindow extends React.Component{
     render(){
         return(
             <View style = {styles.container}>
+                <Progress />
                 <ColorField color = {this.state.showedColor}></ColorField>
                 <Text style = {styles.text}>Color</Text>
                 <ColorField  color = {this.state.guessedColor} />
