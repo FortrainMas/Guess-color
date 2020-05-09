@@ -15,15 +15,14 @@ export default class GameWindow extends React.Component{
     }
     onNewColor = (color) => {
         this.setState({guessedColor: color});
-        this.setState({guessed: !this.state.guessed});
     }
     render(){
         return(
             <View style = {styles.container}>
                 <ColorField color = {this.state.showedColor}></ColorField>
-                <Text>Color</Text>
+                <Text style = {styles.text}>Color</Text>
                 <ColorField  color = {this.state.guessedColor} />
-                <Text>{String(this.state.guessed)}</Text>     
+                <Text style = {styles.text}>Your color</Text>     
                 <ColorSlider onValueChange = {(color)=>{this.onNewColor(color)}}/>           
             </View>
         )
@@ -47,5 +46,11 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       padding:20
+    },
+    text:{
+        fontSize:25,
+        alignSelf: 'flex-start',
+        marginLeft:'5%',
+        marginBottom: '3%',
     },
 });

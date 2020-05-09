@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#000',
       borderRadius:5,
       justifyContent: 'center',
-      padding:20
+      padding:10,
     },
     sliderLine:{
         flexDirection:"row",
