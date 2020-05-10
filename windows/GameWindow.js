@@ -12,7 +12,7 @@ export default class GameWindow extends React.Component{
         this.state = {
             showedColor: getRandomColor(),
             guessedColor: {red: 0, green: 0, blue: 0},
-            isGuessed: false,
+            isGuessed: true,
         }
     }
     //Handle color update in ColorField
@@ -27,7 +27,16 @@ export default class GameWindow extends React.Component{
             }
         });
     }
+    nextButtonHandler = () =>{
+        this.setState({
+            guessedColor:{red: 0, green: 0, blue: 0},
+            showedColor: getRandomColor(),
+            isGuessed: false,
+        });
+        
+    }
     render(){
+        console.log(this.state)
         return(
             <View style = {styles.container}>
                 <Progress isGuessed = {this.state.isGuessed}/>
@@ -36,7 +45,7 @@ export default class GameWindow extends React.Component{
                 <ColorField  color = {this.state.guessedColor} />
                 <Text style = {styles.text}>Your color</Text>  
                 <ColorSlider onValueChange = {(color)=>{this.onNewColor(color)}}/>   
-                <BottomPart />
+                <BottomPart onNextButton = {this.nextButtonHandler} isGuessed = {this.state.isGuessed}/>
             </View>
         )
     }

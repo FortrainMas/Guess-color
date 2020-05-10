@@ -2,10 +2,9 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 
 export default class BottomPart extends React.Component{
-    buttonPressHandle = () => {
-        //const {onPress} = this.props;
-        //onPress();
-        console.log('dsf')
+    NextButton = () => {
+        const {onNextButton} = this.props;
+        onNextButton();
     }
     render(){
         return(
@@ -14,8 +13,8 @@ export default class BottomPart extends React.Component{
                     <Image style = {{width:'100%', height:'100%'}} source = {require('../assets/homeIcon.png')} />
                 </TouchableOpacity>
                 <TouchableOpacity style = {[NextButton.button, this.props.isGuessed ? NextButton.afterVictory : NextButton.beforeVictory]}
-                                  onPress={this.buttonPressHandle} 
-                                  disabled = {false}>
+                                  onPress={this.NextButton} 
+                                  disabled = {!this.props.isGuessed}>
                     <Text style = {NextButton.text}>Next</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {homeButton.button}>
